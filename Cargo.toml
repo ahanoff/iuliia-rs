@@ -3,5 +3,7 @@ name = "iuliia"
 version = "0.1.0"
 authors = ["Akhan Zhakiyanov <ahanoff@gmail.com"]
 edition = "2018"
+license = "MIT"
+publish = false
 
 [dependencies]
