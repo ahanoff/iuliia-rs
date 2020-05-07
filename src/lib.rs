@@ -1,13 +1,30 @@
 pub mod iuliia {
     pub trait Transliterator {
-        fn transliterate(input: String) -> String
+        fn transliterate(&self, input: String) -> String;
+    }
+
+    pub struct Wikipedia;
+    impl Wikipedia {
+        pub fn new() -> Self {
+            Wikipedia {}
+        }
+    }
+
+    impl Transliterator for Wikipedia {
+        fn transliterate(&self, input: String) -> String {
+            return String::from("wiki")
+        }
     }
 }
 
 #[cfg(test)]
 mod tests {
+    use crate::iuliia::Transliterator;
+
     #[test]
     fn test_add() {
-        assert_eq!(add(1, 2), 3);
+        let w = crate::iuliia::Wikipedia::new();
+        let o = w.transliterate(String::from("Юлия"));
+        assert_eq!(o, "wiki")
     }
 }
