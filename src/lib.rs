@@ -11,7 +11,7 @@ pub mod iuliia {
     }
 
     impl Transliterator for Wikipedia {
-        fn transliterate(&self, input: String) -> String {
+        fn transliterate(&self, _input: String) -> String {
             return String::from("wiki")
         }
     }
@@ -22,9 +22,9 @@ mod tests {
     use crate::iuliia::Transliterator;
 
     #[test]
-    fn test_add() {
+    fn first() {
         let w = crate::iuliia::Wikipedia::new();
-        let o = w.transliterate(String::from("Юлия"));
-        assert_eq!(o, "wiki")
+        let o = w.transliterate(String::from("Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю"));
+        assert_eq!(o, "Yuliya, syesh yeshchyo etikh myagkikh frantsuzskikh bulok iz Yoshkar-Oly, da vypey altayskogo chayu")
     }
 }
