@@ -1,4 +1,7 @@
 # `Iuliia`
+
+![Rust](https://github.com/ahanoff/iuliia-rs/workflows/Rust/badge.svg)
+
 > Transliterate Cyrillic → Latin in every possible way
 
 > This is the port of the incredible python library [iuliia](https://github.com/nalgeon/iuliia-py) made by @nalgeon
