@@ -7,3 +7,4 @@ license = "MIT"
 publish = false
 
 [dependencies]
+unicode-segmentation = "1.6.0"

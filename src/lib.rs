@@ -1,5 +1,8 @@
+extern crate unicode_segmentation;
+
 pub mod iuliia {
     use std::collections::HashMap;
+    use unicode_segmentation::UnicodeSegmentation;
 
     pub trait Transliterator {
         fn transliterate(&self, input: String) -> String;
@@ -45,6 +48,39 @@ pub mod iuliia {
             mapping.insert("э".to_string(), "e".to_string());
             mapping.insert("ю".to_string(), "iu".to_string());
             mapping.insert("я".to_string(), "ia".to_string());
+            mapping.insert("А".to_string(), "A".to_string());
+            mapping.insert("Б".to_string(), "B".to_string());
+            mapping.insert("В".to_string(), "V".to_string());
+            mapping.insert("Г".to_string(), "G".to_string());
+            mapping.insert("Д".to_string(), "D".to_string());
+            mapping.insert("Е".to_string(), "E".to_string());
+            mapping.insert("Ё".to_string(), "E".to_string());
+            mapping.insert("Ж".to_string(), "Zh".to_string());
+            mapping.insert("З".to_string(), "Z".to_string());
+            mapping.insert("И".to_string(), "I".to_string());
+            mapping.insert("Й".to_string(), "I".to_string());
+            mapping.insert("К".to_string(), "K".to_string());
+            mapping.insert("Л".to_string(), "L".to_string());
+            mapping.insert("М".to_string(), "M".to_string());
+            mapping.insert("Н".to_string(), "N".to_string());
+            mapping.insert("О".to_string(), "O".to_string());
+            mapping.insert("П".to_string(), "P".to_string());
+            mapping.insert("Р".to_string(), "R".to_string());
+            mapping.insert("С".to_string(), "S".to_string());
+            mapping.insert("Т".to_string(), "T".to_string());
+            mapping.insert("У".to_string(), "U".to_string());
+            mapping.insert("Ф".to_string(), "F".to_string());
+            mapping.insert("Х".to_string(), "Kh".to_string());
+            mapping.insert("Ц".to_string(), "Ts".to_string());
+            mapping.insert("Ч".to_string(), "Ch".to_string());
+            mapping.insert("Ш".to_string(), "Sh".to_string());
+            mapping.insert("Щ".to_string(), "Shch".to_string());
+            mapping.insert("Ъ".to_string(), "Ie".to_string());
+            mapping.insert("Ы".to_string(), "Y".to_string());
+            mapping.insert("Ь".to_string(), "".to_string());
+            mapping.insert("Э".to_string(), "E".to_string());
+            mapping.insert("Ю".to_string(), "Iu".to_string());
+            mapping.insert("Я".to_string(), "Ia".to_string());
 
 
             IcaoDoc9303 {
@@ -55,7 +91,20 @@ pub mod iuliia {
 
     impl Transliterator for IcaoDoc9303 {
         fn transliterate(&self, input: String) -> String {
-            input
+            let mut output = String::from("");
+            let words = input.split_word_bounds().collect::<Vec<&str>>();
+            for word in words {
+                let letters = word.graphemes(true).collect::<Vec<&str>>();
+                for letter in letters {
+                    match self.mapping.get(letter) {
+                         Some(l) => {
+                             output.push_str(l.as_str());
+                         },
+                         _ => output.push_str(letter)
+                    }
+                }
+            }
+            return output;
         }
     }
 }
@@ -68,6 +117,6 @@ mod tests {
     fn first() {
         let w = crate::iuliia::IcaoDoc9303::new();
         let o = w.transliterate("Юлия Щеглова".to_string());
-        assert_eq!(o, "Iuliia Shcheglova".to_string());
+        assert_eq!(o, "Iuliia Shcheglova");
     }
 }
