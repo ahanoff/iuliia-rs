@@ -6,8 +6,8 @@ pub struct IcaoDoc9303 {
     mapping: HashMap<String, String>
 }
 
-impl IcaoDoc9303 {
-    pub fn new() -> Self {
+impl Default for IcaoDoc9303 {
+    fn default() -> Self {
         let mut mapping= HashMap::new();
 
         mapping.insert("а".to_string(), "a".to_string());
@@ -85,7 +85,7 @@ impl IcaoDoc9303 {
 }
 
 impl Transliterator for IcaoDoc9303 {
-    fn transliterate(&self, input: String) -> String {
+    fn transliterate(&self, input: &str) -> String {
         let mut output = String::from("");
         let words = input.split_word_bounds().collect::<Vec<&str>>();
         for word in words {
@@ -109,8 +109,8 @@ mod tests {
 
     #[test]
     fn first() {
-        let icao = crate::schemas::IcaoDoc9303::new();
-        let o = icao.transliterate("Юлия Щеглова".to_string());
+        let icao = crate::schemas::IcaoDoc9303::default();
+        let o = icao.transliterate("Юлия Щеглова");
         assert_eq!(o, "Iuliia Shcheglova");
     }
 }
