@@ -3,6 +3,7 @@ use std::fs::File;
 use serde::{Serialize, Deserialize};
 use std::io::Write;
 use serde_json::{Map, Value};
+use clap::{App, Arg};
 
 #[derive(Serialize, Deserialize)]
 struct Schema {
@@ -18,31 +19,44 @@ struct Schema {
 }
 
 fn main() {
-    let filename = "/home/ahanoff/opsless/iuliia-rs/schemas/gost_7034.json";
-    let json_file = File::open(filename).expect("File not found");
-    let schema: Schema = serde_json::from_reader(&json_file).expect("error while reading json");
+    let matches = App::new("iuliia-codegen")
+        .version("1.0")
+        .author("Akhan Zhakiyanov <ahanoff@gmail.com>")
+        .about("Generates boilerplate for transliteration schema")
+        .arg(Arg::with_name("file").short("f").takes_value(true))
+        .get_matches();
 
-    let mut scope = Scope::new();
-    let schemaName = schema.name.as_str();
+    match matches.value_of("file") {
+        Some(filename) => {
+            let json_file = File::open(filename).expect("File not found");
+            let schema: Schema = serde_json::from_reader(&json_file).expect("error while reading json");
+            let mut scope = Scope::new();
+            let schema_name = schema.name.as_str();
 
-    let schemaStruct = scope.new_struct(schemaName);
+            let _schema_struct = scope.new_struct(schema_name);
 
-    let defaultImplementation = scope.new_impl(schemaName);
-    defaultImplementation.impl_trait("Default");
-    defaultImplementation.new_fn("default")
-        .ret(Type::new("Self"));
+            let default_impl = scope.new_impl(schema_name);
+            default_impl.impl_trait("Default");
+            default_impl.new_fn("default")
+                .ret(Type::new("Self"));
 
-    let transliteratorImpl = scope.new_impl(schemaName);
-    transliteratorImpl.impl_trait("Transliterator");
-    transliteratorImpl.new_fn("transliterate")
-        .arg_ref_self()
-        .arg("input", Type::new("&str"))
-        .ret(Type::new("String"))
-        .line("unimplemented!()");
+            let transliterator_impl = scope.new_impl(schema_name);
+            transliterator_impl.impl_trait("Transliterator");
+            transliterator_impl.new_fn("transliterate")
+                .arg_ref_self()
+                .arg("input", Type::new("&str"))
+                .ret(Type::new("String"))
+                .line("unimplemented!()");
 
-    println!("{}", scope.to_string());
+            println!("{}", scope.to_string());
 
-    // let schema_filename =format!("/home/ahanoff/opsless/iuliia-rs/generated/{}.rs", schema.name.as_str());
-    // let mut f = File::create(schema_filename).expect("File not created");
-    // f.write_all(scope.to_string().as_ref()).expect("couldn't write to file");
+            let schema_filename =format!("/home/ahanoff/opsless/iuliia-rs/generated/{}.rs", schema.name.as_str());
+            let mut f = File::create(schema_filename).expect("File not created");
+            f.write_all(scope.to_string().as_ref()).expect("couldn't write to file");
+            println!("Some")
+        },
+        None => {
+            println!("None")
+        }
+    }
 }
