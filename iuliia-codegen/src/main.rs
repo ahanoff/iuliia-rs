@@ -1,24 +1,10 @@
 use codegen::{Scope, Type};
 use std::fs::File;
-use serde::{Serialize, Deserialize};
 use std::io::Write;
-use serde_json::{Map, Value};
 use clap::{App, Arg};
+use iuliia_codegen::Schema;
 
-#[derive(Serialize, Deserialize)]
-struct Schema {
-    name: String,
-    description: String,
-    url: String,
-    comments: Vec<String>,
-    mapping: Option<Map<String, Value>>,
-    prev_mapping: Option<Map<String, Value>>,
-    next_mapping: Option<Map<String, Value>>,
-    ending_mapping: Option<Map<String, Value>>,
-    samples: Vec<(String, String)>
-}
-
-fn main() {
+fn main() -> anyhow::Result<()> {
     let matches = App::new("iuliia-codegen")
         .version("1.0")
         .author("Akhan Zhakiyanov <ahanoff@gmail.com>")
@@ -28,16 +14,29 @@ fn main() {
 
     match matches.value_of("file") {
         Some(filename) => {
-            let json_file = File::open(filename).expect("File not found");
-            let schema: Schema = serde_json::from_reader(&json_file).expect("error while reading json");
+            let json_file = File::open(filename)?;
+            let schema: Schema = serde_json::from_reader(&json_file)?;
             let mut scope = Scope::new();
             let schema_name = schema.name.as_str();
 
-            let _schema_struct = scope.new_struct(schema_name);
+            scope.raw("use std::collections::HashMap;");
+            scope.raw("use crate::Transliterator;");
+
+            let schema_struct = scope.new_struct(schema_name);
+            schema_struct.field("mapping", Type::new("HashMap<String, String>"));
+            schema_struct.field("prev_mapping", Type::new("Option<HashMap<String, String>>"));
+            schema_struct.field("next_mapping", Type::new("Option<HashMap<String, String>>"));
+            schema_struct.field("ending_mapping", Type::new("Option<HashMap<String, String>>"));
+
 
             let default_impl = scope.new_impl(schema_name);
             default_impl.impl_trait("Default");
             default_impl.new_fn("default")
+                .line("let mut mapping = HashMap::new();")
+                .line("let mut next_mapping = HashMap::new();")
+                .line("let mut prev_mapping = HashMap::new();")
+                .line("let mut ending_mapping = HashMap::new();")
+
                 .ret(Type::new("Self"));
 
             let transliterator_impl = scope.new_impl(schema_name);
@@ -46,17 +45,19 @@ fn main() {
                 .arg_ref_self()
                 .arg("input", Type::new("&str"))
                 .ret(Type::new("String"))
-                .line("unimplemented!()");
+                .line("let mut output = String::from(\"\");");
 
             println!("{}", scope.to_string());
 
             let schema_filename =format!("/home/ahanoff/opsless/iuliia-rs/generated/{}.rs", schema.name.as_str());
-            let mut f = File::create(schema_filename).expect("File not created");
-            f.write_all(scope.to_string().as_ref()).expect("couldn't write to file");
-            println!("Some")
+            let mut f = File::create(schema_filename)?;
+            f.write_all(scope.to_string().as_ref())?;
+            println!("Some");
+            Ok(())
         },
         None => {
-            println!("None")
+            println!("No file provided");
+            Ok(())
         }
     }
 }

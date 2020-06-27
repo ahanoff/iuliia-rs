@@ -3,7 +3,10 @@ use std::collections::HashMap;
 use unicode_segmentation::UnicodeSegmentation;
 
 pub struct IcaoDoc9303 {
-    mapping: HashMap<String, String>
+    mapping: HashMap<String, String>,
+    next_mapping: Option<HashMap<String, String>>,
+    prev_mapping: Option<HashMap<String, String>>,
+    ending_mapping: Option<HashMap<String, String>>
 }
 
 impl Default for IcaoDoc9303 {
@@ -79,7 +82,10 @@ impl Default for IcaoDoc9303 {
 
 
         IcaoDoc9303 {
-            mapping
+            mapping,
+            next_mapping: None,
+            prev_mapping: None,
+            ending_mapping: None
         }
     }
 }
@@ -87,19 +93,41 @@ impl Default for IcaoDoc9303 {
 impl Transliterator for IcaoDoc9303 {
     fn transliterate(&self, input: &str) -> String {
         let mut output = String::from("");
-        let words = input.split_word_bounds().collect::<Vec<&str>>();
-        for word in words {
-            let letters = word.graphemes(true).collect::<Vec<&str>>();
-            for letter in letters {
-                match self.mapping.get(letter) {
-                    Some(l) => {
-                        output.push_str(l.as_str());
+        let transliteration = input
+            .split_word_bounds()
+            .map(|word| {
+                match &self.ending_mapping {
+                    Some(em) => {
+                        // TODO: replace endings
+                        word
                     },
-                    _ => output.push_str(letter)
+                    _ => {
+                        word
+                    }
                 }
-            }
-        }
-        return output;
+            })
+            .map(|word| {
+                word
+            })
+            .collect::<Vec<&str>>()
+            .join("");
+
+        return transliteration;
+
+        // for word in words {
+
+        //
+        //     let letters = word.graphemes(true).collect::<Vec<&str>>();
+        //     for letter in letters {
+        //         match self.mapping.get(letter) {
+        //             Some(l) => {
+        //                 output.push_str(l.as_str());
+        //             },
+        //             _ => output.push_str(letter)
+        //         }
+        //     }
+        // }
+        // return output;
     }
 }
 
