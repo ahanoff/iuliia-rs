@@ -1,12 +1,29 @@
 use crate::Transliterator;
 use std::collections::HashMap;
 use unicode_segmentation::UnicodeSegmentation;
+use std::iter::Map;
 
 pub struct IcaoDoc9303 {
-    mapping: HashMap<String, String>,
-    next_mapping: Option<HashMap<String, String>>,
-    prev_mapping: Option<HashMap<String, String>>,
-    ending_mapping: Option<HashMap<String, String>>
+    pub name: String,
+    pub description: String,
+    pub url: String,
+    pub comments: Vec<String>,
+    pub mapping: HashMap<String, String>,
+    pub prev_mapping: Option<HashMap<String, String>>,
+    pub next_mapping: Option<HashMap<String, String>>,
+    pub ending_mapping: Option<HashMap<String, String>>,
+    pub samples: Vec<(String, String)>
+}
+
+impl IcaoDoc9303 {
+
+    fn translate_word(&self, input: &str) -> String {
+        return "".to_string();
+    }
+
+    fn translate_letter(&self, prev: &str, current: &str, next: &str) -> String {
+        return "".to_string();
+    }
 }
 
 impl Default for IcaoDoc9303 {
@@ -82,53 +99,33 @@ impl Default for IcaoDoc9303 {
 
 
         IcaoDoc9303 {
+            name: "".to_string(),
+            description: "".to_string(),
+            url: "".to_string(),
+            comments: vec![],
             mapping,
             next_mapping: None,
             prev_mapping: None,
-            ending_mapping: None
+            ending_mapping: None,
+            samples: vec![]
         }
     }
 }
 
 impl Transliterator for IcaoDoc9303 {
-    fn transliterate(&self, input: &str) -> String {
+    fn transliterate(&self, input: &str) -> &str {
         let mut output = String::from("");
         let transliteration = input
             .split_word_bounds()
             .map(|word| {
-                match &self.ending_mapping {
-                    Some(em) => {
-                        // TODO: replace endings
-                        word
-                    },
-                    _ => {
-                        word
-                    }
-                }
+                return &self.translate_word(word)
             })
-            .map(|word| {
-                word
-            })
-            .collect::<Vec<&str>>()
+            .collect::<Vec<&String>>()
             .join("");
 
-        return transliteration;
-
-        // for word in words {
-
-        //
-        //     let letters = word.graphemes(true).collect::<Vec<&str>>();
-        //     for letter in letters {
-        //         match self.mapping.get(letter) {
-        //             Some(l) => {
-        //                 output.push_str(l.as_str());
-        //             },
-        //             _ => output.push_str(letter)
-        //         }
-        //     }
-        // }
-        // return output;
+        return &output;
     }
+
 }
 
 #[cfg(test)]

@@ -23,6 +23,7 @@ fn main() -> anyhow::Result<()> {
             scope.raw("use crate::Transliterator;");
 
             let schema_struct = scope.new_struct(schema_name);
+            schema_struct.vis("pub");
             schema_struct.field("mapping", Type::new("HashMap<String, String>"));
             schema_struct.field("prev_mapping", Type::new("Option<HashMap<String, String>>"));
             schema_struct.field("next_mapping", Type::new("Option<HashMap<String, String>>"));
