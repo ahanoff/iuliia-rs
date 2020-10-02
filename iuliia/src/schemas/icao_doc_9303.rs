@@ -17,12 +17,12 @@ pub struct IcaoDoc9303 {
 
 impl IcaoDoc9303 {
 
-    fn translate_word(&self, input: &str) -> String {
-        return "".to_string();
+    fn translate_word(&self, _input: &str) -> &str {
+        return "";
     }
 
-    fn translate_letter(&self, prev: &str, current: &str, next: &str) -> String {
-        return "".to_string();
+    fn translate_letter(&self, _prev: &str, _current: &str, _next: &str) -> &str {
+        return "";
     }
 }
 
@@ -113,19 +113,44 @@ impl Default for IcaoDoc9303 {
 }
 
 impl Transliterator for IcaoDoc9303 {
-    fn transliterate(&self, input: &str) -> &str {
-        let mut output = String::from("");
+    fn transliterate(&self, input: &str) -> String {
         let transliteration = input
             .split_word_bounds()
             .map(|word| {
-                return &self.translate_word(word)
+                return match &self.ending_mapping {
+                    Some(e) => {
+                        // TODO: split word to stem and ending
+                        // TODO: translate ending first
+                        // TODO: translate stem
+                        // TODO: merge stem translation and ending
+                        "some".to_string()
+                    },
+                    None => {
+                        // TODO: translate word
+                        return word.graphemes(true)
+                            .map(|g| {
+                                let t = &self.mapping.get(g);
+                                return match t {
+                                    Some(t) => {
+                                        let s = t.as_str();
+                                        s
+                                    },
+                                    None => {
+                                        g
+                                    }
+                                }
+
+                            })
+                            .collect::<Vec<&str>>()
+                            .join("");
+                    }
+                };
             })
-            .collect::<Vec<&String>>()
+            .collect::<Vec<String>>()
             .join("");
 
-        return &output;
+        return transliteration;
     }
-
 }
 
 #[cfg(test)]
