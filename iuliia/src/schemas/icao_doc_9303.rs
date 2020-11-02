@@ -1,13 +1,33 @@
 use crate::Transliterator;
 use std::collections::HashMap;
 use unicode_segmentation::UnicodeSegmentation;
+use std::iter::Map;
 
 pub struct IcaoDoc9303 {
-    mapping: HashMap<String, String>
+    pub name: String,
+    pub description: String,
+    pub url: String,
+    pub comments: Vec<String>,
+    pub mapping: HashMap<String, String>,
+    pub prev_mapping: Option<HashMap<String, String>>,
+    pub next_mapping: Option<HashMap<String, String>>,
+    pub ending_mapping: Option<HashMap<String, String>>,
+    pub samples: Vec<(String, String)>
 }
 
 impl IcaoDoc9303 {
-    pub fn new() -> Self {
+
+    fn translate_word(&self, _input: &str) -> &str {
+        return "";
+    }
+
+    fn translate_letter(&self, _prev: &str, _current: &str, _next: &str) -> &str {
+        return "";
+    }
+}
+
+impl Default for IcaoDoc9303 {
+    fn default() -> Self {
         let mut mapping= HashMap::new();
 
         mapping.insert("а".to_string(), "a".to_string());
@@ -79,27 +99,57 @@ impl IcaoDoc9303 {
 
 
         IcaoDoc9303 {
-            mapping
+            name: "".to_string(),
+            description: "".to_string(),
+            url: "".to_string(),
+            comments: vec![],
+            mapping,
+            next_mapping: None,
+            prev_mapping: None,
+            ending_mapping: None,
+            samples: vec![]
         }
     }
 }
 
 impl Transliterator for IcaoDoc9303 {
-    fn transliterate(&self, input: String) -> String {
-        let mut output = String::from("");
-        let words = input.split_word_bounds().collect::<Vec<&str>>();
-        for word in words {
-            let letters = word.graphemes(true).collect::<Vec<&str>>();
-            for letter in letters {
-                match self.mapping.get(letter) {
-                    Some(l) => {
-                        output.push_str(l.as_str());
+    fn transliterate(&self, input: &str) -> String {
+        let transliteration = input
+            .split_word_bounds()
+            .map(|word| {
+                return match &self.ending_mapping {
+                    Some(e) => {
+                        // TODO: split word to stem and ending
+                        // TODO: translate ending first
+                        // TODO: translate stem
+                        // TODO: merge stem translation and ending
+                        "some".to_string()
                     },
-                    _ => output.push_str(letter)
-                }
-            }
-        }
-        return output;
+                    None => {
+                        // TODO: translate word
+                        return word.graphemes(true)
+                            .map(|g| {
+                                let t = &self.mapping.get(g);
+                                return match t {
+                                    Some(t) => {
+                                        let s = t.as_str();
+                                        s
+                                    },
+                                    None => {
+                                        g
+                                    }
+                                }
+
+                            })
+                            .collect::<Vec<&str>>()
+                            .join("");
+                    }
+                };
+            })
+            .collect::<Vec<String>>()
+            .join("");
+
+        return transliteration;
     }
 }
 
@@ -109,8 +159,8 @@ mod tests {
 
     #[test]
     fn first() {
-        let icao = crate::schemas::IcaoDoc9303::new();
-        let o = icao.transliterate("Юлия Щеглова".to_string());
+        let icao = crate::schemas::IcaoDoc9303::default();
+        let o = icao.transliterate("Юлия Щеглова");
         assert_eq!(o, "Iuliia Shcheglova");
     }
 }

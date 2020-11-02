@@ -1,0 +1,11 @@
+[package]
+name = "iuliia"
+description = "Transliterate Cyrillic → Latin in every possible way"
+version = "0.1.0-beta.2"
+authors = ["Akhan Zhakiyanov <ahanoff@gmail.com"]
+edition = "2018"
+license = "MIT"
+readme = "ReadMe.md"
+
+[dependencies]
+unicode-segmentation = "1.6.0"
