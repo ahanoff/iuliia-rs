@@ -1,11 +1,14 @@
 [package]
 name = "iuliia"
-description = "Transliterate Cyrillic → Latin in every possible way"
-version = "0.1.0-beta.2"
-authors = ["Akhan Zhakiyanov <ahanoff@gmail.com"]
-edition = "2018"
+description = "Transliterate Cyrillic to Latin in every possible way"
+version = "0.1.0"
+authors = ["Akhan Zhakiyanov <ahanoff@gmail.com>"]
+edition = "2021"
 license = "MIT"
-readme = "ReadMe.md"
+readme = "README.md"
+keywords = ["transliteration", "cyrillic", "latin", "iuliia"]
+categories = ["text-processing", "internationalization"]
+repository = "https://github.com/ahanoff/iuliia-rs"
 
+# ZERO dependencies - all schema data is code-generated at build time
 [dependencies]
-unicode-segmentation = "1.6.0"
