@@ -118,42 +118,27 @@ mod tests {
 
     #[test]
     fn test_sample_1() {
-        assert_eq!(
-            Mvd782::transliterate("Юлия Щеглова"),
-            "Yuliya Shcheglova"
-        );
+        assert_eq!(Mvd782::transliterate("Юлия Щеглова"), "Yuliya Shcheglova");
     }
 
     #[test]
     fn test_sample_2() {
-        assert_eq!(
-            Mvd782::transliterate("Гайа Васильева"),
-            "Gaya Vasilyeva"
-        );
+        assert_eq!(Mvd782::transliterate("Гайа Васильева"), "Gaya Vasilyeva");
     }
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            Mvd782::transliterate("Андрей Видный"),
-            "Andrey Vidnyy"
-        );
+        assert_eq!(Mvd782::transliterate("Андрей Видный"), "Andrey Vidnyy");
     }
 
     #[test]
     fn test_sample_4() {
-        assert_eq!(
-            Mvd782::transliterate("Артём Краевой"),
-            "Artyem Krayevoy"
-        );
+        assert_eq!(Mvd782::transliterate("Артём Краевой"), "Artyem Krayevoy");
     }
 
     #[test]
     fn test_sample_5() {
-        assert_eq!(
-            Mvd782::transliterate("Мадыр Чёткий"),
-            "Madyr Chetkiy"
-        );
+        assert_eq!(Mvd782::transliterate("Мадыр Чёткий"), "Madyr Chetkiy");
     }
 
     #[test]
@@ -166,9 +151,6 @@ mod tests {
 
     #[test]
     fn test_sample_7() {
-        assert_eq!(
-            Mvd782::transliterate("Игорь Ильин"),
-            "Igor' Ilyin"
-        );
+        assert_eq!(Mvd782::transliterate("Игорь Ильин"), "Igor' Ilyin");
     }
 }

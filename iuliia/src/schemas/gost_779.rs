@@ -9,9 +9,7 @@ pub struct Gost779;
 
 impl Schema for Gost779 {
     const NAME: &'static str = "gost_779";
-    const ALIASES: &'static [&'static str] = &[
-        "iso_9_1995",
-    ];
+    const ALIASES: &'static [&'static str] = &["iso_9_1995"];
 
     fn mapping(c: char) -> Option<&'static str> {
         match c {

@@ -114,50 +114,32 @@ mod tests {
 
     #[test]
     fn test_sample_2() {
-        assert_eq!(
-            Wikipedia::transliterate("Ельцин"),
-            "Yeltsin"
-        );
+        assert_eq!(Wikipedia::transliterate("Ельцин"), "Yeltsin");
     }
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            Wikipedia::transliterate("Раздольное"),
-            "Razdolnoye"
-        );
+        assert_eq!(Wikipedia::transliterate("Раздольное"), "Razdolnoye");
     }
 
     #[test]
     fn test_sample_4() {
-        assert_eq!(
-            Wikipedia::transliterate("Юрьев"),
-            "Yuryev"
-        );
+        assert_eq!(Wikipedia::transliterate("Юрьев"), "Yuryev");
     }
 
     #[test]
     fn test_sample_5() {
-        assert_eq!(
-            Wikipedia::transliterate("Белкин"),
-            "Belkin"
-        );
+        assert_eq!(Wikipedia::transliterate("Белкин"), "Belkin");
     }
 
     #[test]
     fn test_sample_6() {
-        assert_eq!(
-            Wikipedia::transliterate("Бийск"),
-            "Biysk"
-        );
+        assert_eq!(Wikipedia::transliterate("Бийск"), "Biysk");
     }
 
     #[test]
     fn test_sample_7() {
-        assert_eq!(
-            Wikipedia::transliterate("Подъярский"),
-            "Podyarsky"
-        );
+        assert_eq!(Wikipedia::transliterate("Подъярский"), "Podyarsky");
     }
 
     #[test]
@@ -170,58 +152,37 @@ mod tests {
 
     #[test]
     fn test_sample_9() {
-        assert_eq!(
-            Wikipedia::transliterate("Давыдов"),
-            "Davydov"
-        );
+        assert_eq!(Wikipedia::transliterate("Давыдов"), "Davydov");
     }
 
     #[test]
     fn test_sample_10() {
-        assert_eq!(
-            Wikipedia::transliterate("Усолье"),
-            "Usolye"
-        );
+        assert_eq!(Wikipedia::transliterate("Усолье"), "Usolye");
     }
 
     #[test]
     fn test_sample_11() {
-        assert_eq!(
-            Wikipedia::transliterate("Выхухоль"),
-            "Vykhukhol"
-        );
+        assert_eq!(Wikipedia::transliterate("Выхухоль"), "Vykhukhol");
     }
 
     #[test]
     fn test_sample_12() {
-        assert_eq!(
-            Wikipedia::transliterate("Дальнегорск"),
-            "Dalnegorsk"
-        );
+        assert_eq!(Wikipedia::transliterate("Дальнегорск"), "Dalnegorsk");
     }
 
     #[test]
     fn test_sample_13() {
-        assert_eq!(
-            Wikipedia::transliterate("Ильинский"),
-            "Ilyinsky"
-        );
+        assert_eq!(Wikipedia::transliterate("Ильинский"), "Ilyinsky");
     }
 
     #[test]
     fn test_sample_14() {
-        assert_eq!(
-            Wikipedia::transliterate("Красный"),
-            "Krasny"
-        );
+        assert_eq!(Wikipedia::transliterate("Красный"), "Krasny");
     }
 
     #[test]
     fn test_sample_15() {
-        assert_eq!(
-            Wikipedia::transliterate("Великий"),
-            "Veliky"
-        );
+        assert_eq!(Wikipedia::transliterate("Великий"), "Veliky");
     }
 
     #[test]

@@ -101,10 +101,7 @@ mod tests {
 
     #[test]
     fn test_sample_1() {
-        assert_eq!(
-            Mosmetro::transliterate("Битцевский парк"),
-            "Bitsevsky park"
-        );
+        assert_eq!(Mosmetro::transliterate("Битцевский парк"), "Bitsevsky park");
     }
 
     #[test]
@@ -117,98 +114,62 @@ mod tests {
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            Mosmetro::transliterate("Воробьёвы горы"),
-            "Vorobyovy gory"
-        );
+        assert_eq!(Mosmetro::transliterate("Воробьёвы горы"), "Vorobyovy gory");
     }
 
     #[test]
     fn test_sample_4() {
-        assert_eq!(
-            Mosmetro::transliterate("Выхино"),
-            "Vykhino"
-        );
+        assert_eq!(Mosmetro::transliterate("Выхино"), "Vykhino");
     }
 
     #[test]
     fn test_sample_5() {
-        assert_eq!(
-            Mosmetro::transliterate("Зябликово"),
-            "Zyablikovo"
-        );
+        assert_eq!(Mosmetro::transliterate("Зябликово"), "Zyablikovo");
     }
 
     #[test]
     fn test_sample_6() {
-        assert_eq!(
-            Mosmetro::transliterate("Измайловская"),
-            "Izmaylovskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Измайловская"), "Izmaylovskaya");
     }
 
     #[test]
     fn test_sample_7() {
-        assert_eq!(
-            Mosmetro::transliterate("Кожуховская"),
-            "Kozhukhovskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Кожуховская"), "Kozhukhovskaya");
     }
 
     #[test]
     fn test_sample_8() {
-        assert_eq!(
-            Mosmetro::transliterate("Крылатское"),
-            "Krylatskoe"
-        );
+        assert_eq!(Mosmetro::transliterate("Крылатское"), "Krylatskoe");
     }
 
     #[test]
     fn test_sample_9() {
-        assert_eq!(
-            Mosmetro::transliterate("Марьина Роща"),
-            "Maryina Roscha"
-        );
+        assert_eq!(Mosmetro::transliterate("Марьина Роща"), "Maryina Roscha");
     }
 
     #[test]
     fn test_sample_10() {
-        assert_eq!(
-            Mosmetro::transliterate("Марьино"),
-            "Maryino"
-        );
+        assert_eq!(Mosmetro::transliterate("Марьино"), "Maryino");
     }
 
     #[test]
     fn test_sample_11() {
-        assert_eq!(
-            Mosmetro::transliterate("Молодёжная"),
-            "Molodezhnaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Молодёжная"), "Molodezhnaya");
     }
 
     #[test]
     fn test_sample_12() {
-        assert_eq!(
-            Mosmetro::transliterate("Октябрьская"),
-            "Oktyabrskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Октябрьская"), "Oktyabrskaya");
     }
 
     #[test]
     fn test_sample_13() {
-        assert_eq!(
-            Mosmetro::transliterate("Ольховая"),
-            "Olkhovaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Ольховая"), "Olkhovaya");
     }
 
     #[test]
     fn test_sample_14() {
-        assert_eq!(
-            Mosmetro::transliterate("Парк Победы"),
-            "Park Pobedy"
-        );
+        assert_eq!(Mosmetro::transliterate("Парк Победы"), "Park Pobedy");
     }
 
     #[test]
@@ -237,82 +198,52 @@ mod tests {
 
     #[test]
     fn test_sample_18() {
-        assert_eq!(
-            Mosmetro::transliterate("Румянцево"),
-            "Rumyantsevo"
-        );
+        assert_eq!(Mosmetro::transliterate("Румянцево"), "Rumyantsevo");
     }
 
     #[test]
     fn test_sample_19() {
-        assert_eq!(
-            Mosmetro::transliterate("Саларьево"),
-            "Salaryevo"
-        );
+        assert_eq!(Mosmetro::transliterate("Саларьево"), "Salaryevo");
     }
 
     #[test]
     fn test_sample_20() {
-        assert_eq!(
-            Mosmetro::transliterate("Семёновская"),
-            "Semenovskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Семёновская"), "Semenovskaya");
     }
 
     #[test]
     fn test_sample_21() {
-        assert_eq!(
-            Mosmetro::transliterate("Сходненская"),
-            "Skhodnenskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Сходненская"), "Skhodnenskaya");
     }
 
     #[test]
     fn test_sample_22() {
-        assert_eq!(
-            Mosmetro::transliterate("Текстильщики"),
-            "Tekstilschiki"
-        );
+        assert_eq!(Mosmetro::transliterate("Текстильщики"), "Tekstilschiki");
     }
 
     #[test]
     fn test_sample_23() {
-        assert_eq!(
-            Mosmetro::transliterate("Тёплый стан"),
-            "Teply stan"
-        );
+        assert_eq!(Mosmetro::transliterate("Тёплый стан"), "Teply stan");
     }
 
     #[test]
     fn test_sample_24() {
-        assert_eq!(
-            Mosmetro::transliterate("Третьяковская"),
-            "Tretyakovskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Третьяковская"), "Tretyakovskaya");
     }
 
     #[test]
     fn test_sample_25() {
-        assert_eq!(
-            Mosmetro::transliterate("Тропарёво"),
-            "Troparevo"
-        );
+        assert_eq!(Mosmetro::transliterate("Тропарёво"), "Troparevo");
     }
 
     #[test]
     fn test_sample_26() {
-        assert_eq!(
-            Mosmetro::transliterate("Фонвизинская"),
-            "Fonvizinskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Фонвизинская"), "Fonvizinskaya");
     }
 
     #[test]
     fn test_sample_27() {
-        assert_eq!(
-            Mosmetro::transliterate("Чистые пруды"),
-            "Chistye prudy"
-        );
+        assert_eq!(Mosmetro::transliterate("Чистые пруды"), "Chistye prudy");
     }
 
     #[test]
@@ -325,10 +256,7 @@ mod tests {
 
     #[test]
     fn test_sample_29() {
-        assert_eq!(
-            Mosmetro::transliterate("Щёлковская"),
-            "Schelkovskaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Щёлковская"), "Schelkovskaya");
     }
 
     #[test]
@@ -341,9 +269,6 @@ mod tests {
 
     #[test]
     fn test_sample_31() {
-        assert_eq!(
-            Mosmetro::transliterate("Юго-Западная"),
-            "Yugo-Zapadnaya"
-        );
+        assert_eq!(Mosmetro::transliterate("Юго-Западная"), "Yugo-Zapadnaya");
     }
 }

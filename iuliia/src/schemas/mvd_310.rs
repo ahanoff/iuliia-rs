@@ -84,25 +84,16 @@ mod tests {
 
     #[test]
     fn test_sample_1() {
-        assert_eq!(
-            Mvd310::transliterate("Юлия Щеглова"),
-            "Yuliya Shcheglova"
-        );
+        assert_eq!(Mvd310::transliterate("Юлия Щеглова"), "Yuliya Shcheglova");
     }
 
     #[test]
     fn test_sample_2() {
-        assert_eq!(
-            Mvd310::transliterate("Гайа Васильева"),
-            "Gaya Vasilyeva"
-        );
+        assert_eq!(Mvd310::transliterate("Гайа Васильева"), "Gaya Vasilyeva");
     }
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            Mvd310::transliterate("Андрей Видный"),
-            "Andrey Vidnyy"
-        );
+        assert_eq!(Mvd310::transliterate("Андрей Видный"), "Andrey Vidnyy");
     }
 }

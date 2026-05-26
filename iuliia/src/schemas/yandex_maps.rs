@@ -114,17 +114,11 @@ mod tests {
 
     #[test]
     fn test_sample_5() {
-        assert_eq!(
-            YandexMaps::transliterate("Щегловитовка"),
-            "Scheglovitovka"
-        );
+        assert_eq!(YandexMaps::transliterate("Щегловитовка"), "Scheglovitovka");
     }
 
     #[test]
     fn test_sample_6() {
-        assert_eq!(
-            YandexMaps::transliterate("Новый Уренгой"),
-            "Noviy Urengoy"
-        );
+        assert_eq!(YandexMaps::transliterate("Новый Уренгой"), "Noviy Urengoy");
     }
 }

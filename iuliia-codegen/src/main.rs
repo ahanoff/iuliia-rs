@@ -116,13 +116,12 @@ fn generate_schema_file(schema_file: &SchemaFile) -> Result<String> {
         output.push_str("//!\n");
         for comment in &schema.comments {
             // Escape lines that could be misinterpreted as markdown list items or blockquotes
-            let escaped = if comment.trim_start().starts_with('-')
-                || comment.trim_start().starts_with('>')
-            {
-                format!("\\{}", comment)
-            } else {
-                comment.clone()
-            };
+            let escaped =
+                if comment.trim_start().starts_with('-') || comment.trim_start().starts_with('>') {
+                    format!("\\{}", comment)
+                } else {
+                    comment.clone()
+                };
             output.push_str(&format!("//! {escaped}\n"));
         }
     }

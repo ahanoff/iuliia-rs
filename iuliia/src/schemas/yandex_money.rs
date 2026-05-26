@@ -92,9 +92,6 @@ mod tests {
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            YandexMoney::transliterate("Ксения Стрый"),
-            "Kseniya Stryi"
-        );
+        assert_eq!(YandexMoney::transliterate("Ксения Стрый"), "Kseniya Stryi");
     }
 }

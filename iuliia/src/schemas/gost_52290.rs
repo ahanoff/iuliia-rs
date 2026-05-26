@@ -124,9 +124,6 @@ mod tests {
 
     #[test]
     fn test_sample_2() {
-        assert_eq!(
-            Gost52290::transliterate("Ё Крё Мякоё"),
-            "Yo Krye Myakoyo"
-        );
+        assert_eq!(Gost52290::transliterate("Ё Крё Мякоё"), "Yo Krye Myakoyo");
     }
 }

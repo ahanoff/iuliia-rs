@@ -114,193 +114,121 @@ mod tests {
 
     #[test]
     fn test_sample_2() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Елизово"),
-            "Yelizovo"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Елизово"), "Yelizovo");
     }
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Чапаевск"),
-            "Chapayevsk"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Чапаевск"), "Chapayevsk");
     }
 
     #[test]
     fn test_sample_4() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Мейеровка"),
-            "Meyyerovka"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Мейеровка"), "Meyyerovka");
     }
 
     #[test]
     fn test_sample_5() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Юрьев объезд"),
-            "Yur’yev ob”yezd"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Юрьев объезд"), "Yur’yev ob”yezd");
     }
 
     #[test]
     fn test_sample_6() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Белкино"),
-            "Belkino"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Белкино"), "Belkino");
     }
 
     #[test]
     fn test_sample_7() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Ёдва"),
-            "Yёdva"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Ёдва"), "Yёdva");
     }
 
     #[test]
     fn test_sample_8() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Змииёвка"),
-            "Zmiiyёvka"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Змииёвка"), "Zmiiyёvka");
     }
 
     #[test]
     fn test_sample_9() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Айёган"),
-            "Ayyёgan"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Айёган"), "Ayyёgan");
     }
 
     #[test]
     fn test_sample_10() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Воробьёво"),
-            "Vorob’yёvo"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Воробьёво"), "Vorob’yёvo");
     }
 
     #[test]
     fn test_sample_11() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Кебанъёль"),
-            "Keban”yёl’"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Кебанъёль"), "Keban”yёl’");
     }
 
     #[test]
     fn test_sample_12() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Озёрный"),
-            "Ozёrnyy"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Озёрный"), "Ozёrnyy");
     }
 
     #[test]
     fn test_sample_13() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Тыайа"),
-            "Tyaya"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Тыайа"), "Tyaya");
     }
 
     #[test]
     fn test_sample_14() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Сайылык"),
-            "Sayylyk"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Сайылык"), "Sayylyk");
     }
 
     #[test]
     fn test_sample_15() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Ойусардах"),
-            "Oyusardakh"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Ойусардах"), "Oyusardakh");
     }
 
     #[test]
     fn test_sample_16() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Йошкар-Ола"),
-            "Yoshkar-Ola"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Йошкар-Ола"), "Yoshkar-Ola");
     }
 
     #[test]
     fn test_sample_17() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Бийск"),
-            "Biysk"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Бийск"), "Biysk");
     }
 
     #[test]
     fn test_sample_18() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Тыэкан"),
-            "Tyekan"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Тыэкан"), "Tyekan");
     }
 
     #[test]
     fn test_sample_19() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Суык-Су"),
-            "Suyk-Su"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Суык-Су"), "Suyk-Su");
     }
 
     #[test]
     fn test_sample_20() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Тында"),
-            "Tynda"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Тында"), "Tynda");
     }
 
     #[test]
     fn test_sample_21() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Улан-Удэ"),
-            "Ulan-Ude"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Улан-Удэ"), "Ulan-Ude");
     }
 
     #[test]
     fn test_sample_22() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Электрогорск"),
-            "Elektrogorsk"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Электрогорск"), "Elektrogorsk");
     }
 
     #[test]
     fn test_sample_23() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Руэм"),
-            "Ruem"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Руэм"), "Ruem");
     }
 
     #[test]
     fn test_sample_24() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Вяртсиля"),
-            "Vyartsilya"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Вяртсиля"), "Vyartsilya");
     }
 
     #[test]
     fn test_sample_25() {
-        assert_eq!(
-            BgnPcgnAlt::transliterate("Ташчишма"),
-            "Tashchishma"
-        );
+        assert_eq!(BgnPcgnAlt::transliterate("Ташчишма"), "Tashchishma");
     }
 }

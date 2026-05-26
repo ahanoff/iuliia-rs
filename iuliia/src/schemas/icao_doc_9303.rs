@@ -92,26 +92,17 @@ mod tests {
 
     #[test]
     fn test_sample_3() {
-        assert_eq!(
-            IcaoDoc9303::transliterate("Андрей Видный"),
-            "Andrei Vidnyi"
-        );
+        assert_eq!(IcaoDoc9303::transliterate("Андрей Видный"), "Andrei Vidnyi");
     }
 
     #[test]
     fn test_sample_4() {
-        assert_eq!(
-            IcaoDoc9303::transliterate("Артём Краевой"),
-            "Artem Kraevoi"
-        );
+        assert_eq!(IcaoDoc9303::transliterate("Артём Краевой"), "Artem Kraevoi");
     }
 
     #[test]
     fn test_sample_5() {
-        assert_eq!(
-            IcaoDoc9303::transliterate("Мадыр Чёткий"),
-            "Madyr Chetkii"
-        );
+        assert_eq!(IcaoDoc9303::transliterate("Мадыр Чёткий"), "Madyr Chetkii");
     }
 
     #[test]
@@ -124,10 +115,7 @@ mod tests {
 
     #[test]
     fn test_sample_7() {
-        assert_eq!(
-            IcaoDoc9303::transliterate("Игорь Ильин"),
-            "Igor Ilin"
-        );
+        assert_eq!(IcaoDoc9303::transliterate("Игорь Ильин"), "Igor Ilin");
     }
 
     #[test]
