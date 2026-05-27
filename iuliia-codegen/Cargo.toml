@@ -1,7 +1,6 @@
 [package]
 name = "iuliia-codegen"
 version = "0.1.0"
-authors = ["Akhan Zhakiyanov <ahanoff@gmail.com>"]
 edition = "2021"
 description = "Code generator for iuliia transliteration schemas"
 
