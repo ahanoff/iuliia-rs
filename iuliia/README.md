@@ -4,7 +4,7 @@
 [![crates.io](https://img.shields.io/crates/v/iuliia.svg)](https://crates.io/crates/iuliia)
 [![docs.rs](https://docs.rs/iuliia/badge.svg)](https://docs.rs/iuliia)
 
-Transliterate Cyrillic to Latin in every possible way.
+Transliterate Cyrillic to Latin using standardized schemas.
 
 `iuliia` is a Rust port of the excellent Python library [iuliia](https://github.com/nalgeon/iuliia-py) by [@nalgeon](https://github.com/nalgeon). It supports standardized transliteration schemas used for international passports, visas, green cards, driving licenses, mail, goods delivery, maps, and other text processing tasks.
 
@@ -118,7 +118,7 @@ match iuliia::transliterate("Юлия", "unknown_schema") {
 cargo build -p iuliia --target wasm32-unknown-unknown
 ```
 
-## Maintainers
+## Development
 
 Schema tables are generated from source data. After changing schemas or code generation logic, regenerate the Rust modules with:
 
@@ -126,9 +126,7 @@ Schema tables are generated from source data. After changing schemas or code gen
 cargo run -p iuliia-codegen
 ```
 
-## Contributing
-
-Issues and pull requests are welcome. Please keep changes focused, add tests for behavior changes, and run the crate checks before opening a pull request.
+See the [contributing guide](../CONTRIBUTING.md) for the full development workflow.
 
 ## License
 
